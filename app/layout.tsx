@@ -15,8 +15,8 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Jensen — Software Developer',
-  description: 'Portfolio of Jensen, Software Developer specializing in web development and app development.',
+  title: 'Edem Wilfried Amouzou - Portfolio',
+  description: 'Portfolio de Edem Wilfried Amouzou, développeur web spécialisé en Django et React. Découvrez mes projets, compétences et expériences dans le développement frontend.',
 }
 
 export default function RootLayout({
