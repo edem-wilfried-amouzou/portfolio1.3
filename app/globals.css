@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --coral: #ff6b4a;
+  --coral-dark: #e55a3a;
+  --dark-900: #0a0c14;
+  --dark-800: #0f1220;
+  --dark-700: #141828;
+  --dark-600: #1a2035;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark-900);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark-800);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--coral);
+  border-radius: 2px;
+}
+
+/* Section reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Noise overlay */
+.noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #ff6b4a, #ff9a7a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow border */
+.glow-border {
+  border: 1px solid rgba(255, 107, 74, 0.3);
+  box-shadow: 0 0 20px rgba(255, 107, 74, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.glow-border:hover {
+  border-color: rgba(255, 107, 74, 0.6);
+  box-shadow: 0 0 40px rgba(255, 107, 74, 0.2);
+}
+
+/* Nav link hover */
+.nav-link {
+  position: relative;
+  color: rgba(255,255,255,0.6);
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--coral);
+  transition: width 0.3s ease;
+}
+.nav-link:hover {
+  color: white;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Progress bar */
+.skill-bar {
+  position: relative;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--coral), #ff9a7a);
+  border-radius: 2px;
+  transition: width 1.5s ease;
+}
+
+/* Tag styles */
+.tag {
+  font-family: var(--font-space-mono);
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(255, 107, 74, 0.12);
+  color: var(--coral);
+  border: 1px solid rgba(255, 107, 74, 0.25);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Hero background glow */
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 74, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Avatar ring */
+.avatar-ring {
+  position: relative;
+}
+.avatar-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--coral), transparent, var(--coral));
+  animation: spin 4s linear infinite;
+  z-index: -1;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Project card hover */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,107,74,0.1);
+}
+
+/* Button styles */
+.btn-coral {
+  background: var(--coral);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+}
+.btn-coral:hover {
+  background: var(--coral-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(255,107,74,0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--coral);
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  transition: all 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid var(--coral);
+}
+.btn-outline:hover {
+  background: rgba(255,107,74,0.1);
+}
