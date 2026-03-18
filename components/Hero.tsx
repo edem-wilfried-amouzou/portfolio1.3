@@ -154,7 +154,7 @@ export default function Hero() {
                           animation: 'spin 6s linear infinite reverse', 
                     }}
                   >
-                    <Image src="/hero.png" alt="Edem Wilfried AMOUZOU" width={320} height={320} className="rounded-full object-cover w-full h-full" />                
+                    <img src="/hero.png" alt="Edem Wilfried AMOUZOU" className="rounded-full object-cover w-full h-full" />                
                   </div>
                 </div>
               </div>
