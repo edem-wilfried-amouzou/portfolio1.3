@@ -1,11 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)      // pour le formulaire
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,10 +23,21 @@ export default function Contact() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+ const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    setTimeout(() => setStatus('sent'), 1500)
+    try {
+      await emailjs.sendForm(
+        'service_m3g5cur',
+        'template_g3mgup4',
+        formRef.current!,
+        'NDyRTBUaF5at89lnm'
+      )
+      setStatus('sent')
+    } catch (err: any) {
+      setStatus('error')
+      console.error(err)
+    }
   }
 
   return (
@@ -154,8 +167,25 @@ export default function Contact() {
                     Merci de m'avoir contacté. Je vous répondrai dans les 24 heures.
                   </p>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                
+              ) : status === 'error' ? (
+                  <div className="flex flex-col items-center justify-center py-12 text-center">
+                    <div className="w-16 h-16 rounded-full bg-red-500/15 flex items-center justify-center mb-4 text-2xl text-red-400">
+                      ✗
+                    </div>
+                    <h3 className="font-bold text-xl mb-2 text-white">Échec de l'envoi</h3>
+                    <p className="text-white/40 text-sm mb-6">
+                      Une erreur s'est produite. Veuillez réessayer.
+                    </p>
+                    <button
+                      onClick={() => setStatus('idle')}
+                      className="bg-coral hover:bg-coral-dark text-white text-sm font-semibold px-6 py-2.5 rounded-md transition-all duration-200"
+                    >
+                      Réessayer
+                    </button>
+                  </div>
+                ) : (
+                <form onSubmit={handleSubmit} ref={formRef} className="flex flex-col gap-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block font-mono text-xs text-white/40 mb-2 uppercase tracking-wider">
@@ -163,6 +193,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="text"
+                        name='name'
                         required
                         placeholder="Votre nom"
                         value={form.name}
@@ -188,6 +219,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="email"
+                        name='email'
                         required
                         placeholder="Votre email"
                         value={form.email}
@@ -215,6 +247,7 @@ export default function Contact() {
                     </label>
                     <input
                       type="text"
+                      name='subject'
                       placeholder="Motif du contact"
                       className="w-full px-4 py-3 rounded-lg text-sm text-white placeholder-white/20 outline-none transition-all"
                       style={{
@@ -239,6 +272,7 @@ export default function Contact() {
                     <textarea
                       required
                       rows={5}
+                      name='message'
                       placeholder="Votre message..."
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
