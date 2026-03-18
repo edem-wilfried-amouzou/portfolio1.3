@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import hero from './public/hero.png'
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -103,7 +103,7 @@ export default function Hero() {
               className="reveal flex flex-wrap gap-2 mb-8"
               style={{ transitionDelay: '0.55s' }}
             >
-              {['PYTHON', 'JAVASCRIPT', 'TAILWIND CSS', ].map((tech) => (
+              {['Python', 'JavaScript', 'Tailwind CSS', 'DaisyUI'].map((tech) => (
                 <span key={tech} className="tag">
                   {tech}
                 </span>
@@ -154,7 +154,7 @@ export default function Hero() {
                           animation: 'spin 6s linear infinite reverse', 
                     }}
                   >
-                    {hero && <img src={hero.src} alt="Edem Wilfried AMOUZOU" className="rounded-full object-cover w-full h-full" />}                  
+                    <Image src="/hero.png" alt="Edem Wilfried AMOUZOU" width={320} height={320} className="rounded-full object-cover w-full h-full" />                
                   </div>
                 </div>
               </div>

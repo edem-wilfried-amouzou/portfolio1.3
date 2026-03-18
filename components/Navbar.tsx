@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+
 
 const navLinks = [
   { label: 'Accueil', href: '#home' },
@@ -51,7 +52,7 @@ export default function Navbar() {
         <a href="#contact" className="hidden md:block btn-coral text-xs">
           Me contacter
         </a>
-        <a href="#contact" className="hidden md:block btn-coral text-xs">
+        <a href="/cv.pdf" download="CV_Edem_Wilfried_AMOUZOU.pdf" className="hidden md:block btn-coral text-xs">
           Telecharger Mon CV
         </a>
         </div>
