@@ -10,10 +10,10 @@ const projects = [
     description:
       'Une application web de gestion d\'employés développée avec Django et le Django Template Language (DTL). Permet aux utilisateurs de créer, lire, mettre à jour et supprimer des enregistrements d\'employés, avec une interface utilisateur simple et réactive.',
     tags: ['Django', 'Django Template Language', 'Python', 'SQLite', 'CRUD', 'Tailwind CSS'],
-    status: 'Live',
+    status: 'Terminé',
     link: '#',
-    previewBg: 'from-blue-900/30 to-purple-900/20',
-    icon: '🎬',
+    code: '#',
+    previewBg: '/emp.png',
   },
   {
     id: 2,
@@ -22,10 +22,10 @@ const projects = [
     description:
       'Une application de gestion de restaurant développée en Java avec une interface graphique Swing. Permet aux utilisateurs de gérer les réservations, les commandes, les menus et les employés, offrant une solution complète pour les opérations quotidiennes d\'un restaurant.',
     tags: ['Java', 'Java Swing', 'SQL', 'CRUD'],
-    status: 'Live',
+    status: 'Terminé',
     link: '#',
-    previewBg: 'from-green-900/30 to-teal-900/20',
-    icon: '🧮',
+    code: '#',
+    previewBg: 'rest.png',
   },
   {
     id: 3,
@@ -34,10 +34,10 @@ const projects = [
     description:
       'Une application de gestion de patrimoine développée avec Django et le Django Template Language (DTL). Permet aux utilisateurs de gérer leur patrimoine de manière efficace et intuitive.',
     tags: ['Django', 'Django Template Language', 'Python', 'REST API', 'JWT', 'OAuth2', 'Tailwind CSS'],
-    status: 'Live',
+    status: 'En Ligne',
     link: '#',
-    previewBg: 'from-orange-900/30 to-red-900/20',
-    icon: '🚀',
+    code: '#',
+    previewBg: 'gestPat.png',
     featured: true,
   },
 ]
@@ -119,12 +119,12 @@ export default function Projects() {
             >
               {/* Preview area */}
               <div
-                className={`h-36 bg-gradient-to-br ${project.previewBg} flex items-center justify-center relative`}
+                className={`h-65 bg-gradient-to-br from-blue-900/30 to-purple-900/20 flex items-center justify-center relative`}
               >
-                
+                <img src={project.previewBg} className={`h-full w-full object-cover bg-gradient-to-br flex items-center justify-center relative`} />
                 <span
                   className={`absolute top-3 left-3 text-xs font-mono px-2 py-1 rounded ${
-                    project.status === 'Live'
+                    project.status === 'En Ligne'
                       ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                       : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
                   }`}
@@ -163,7 +163,7 @@ export default function Projects() {
                     Live Demo
                   </a>
                   <a
-                    href="#"
+                    href={project.code}
                     className="flex items-center gap-1.5 text-xs font-medium text-white/60 hover:text-white transition-colors"
                   >
                     <GithubIcon />
