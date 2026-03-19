@@ -334,12 +334,9 @@ export default function Projects() {
             >
               {/* Preview area — hauteur fixe, image sans déformation */}
               <div className="relative h-48 w-full flex-shrink-0 overflow-hidden bg-dark-700">
-                <Image
+                <img
                   src={project.previewBg}
                   alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <span
                   className={`absolute top-3 left-3 text-xs font-mono px-2 py-1 rounded ${
