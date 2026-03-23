@@ -130,9 +130,9 @@ export default function Contact() {
                 <p className="text-xs text-white/40 font-mono mb-3">Suivez-moi</p>
                 <div className="flex items-center gap-3">
                   {[
-                    { label: 'GitHub', href: '#' },
-                    { label: 'LinkedIn', href: '#' },
-                    { label: 'Twitter', href: '#' },
+                    { label: 'GitHub', href: 'https://github.com/edem-wilfried-amouzou' },
+                    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/edem-wilfried-amouzou-b70ab2332/' },
+                    // { label: 'Twitter', href: '#' },
                   ].map((s) => (
                     <a
                       key={s.label}
