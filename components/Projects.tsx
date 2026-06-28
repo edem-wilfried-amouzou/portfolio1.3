@@ -256,6 +256,19 @@ const projects = [
     previewBg: '/jobTg.svg',
     featured: false,
   },
+  {
+    id: 5,
+    title: 'EJA BLOG',
+    category: 'Django & Wagtail',
+    description:
+      'Le marché de l\'emploi togolais est éparpillé sur 5+ plateformes différentes. JobTogo unifie toutes ces plateformes en un seul endroit pour faciliter la recherche d\'emploi.',
+    tags: ['Django', 'Wagtail', 'TailwindCSS & DaisyUI', 'Postgresql'],
+    status: 'En Ligne',
+    link: 'https://eja-blog.up.railway.app/',
+    code: '#',
+    previewBg: '/jobTg.svg',
+    featured: 'true',
+  },
 ]
 
 function ExternalLinkIcon() {
